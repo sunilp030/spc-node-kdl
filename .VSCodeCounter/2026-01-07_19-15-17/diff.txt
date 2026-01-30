@@ -1,0 +1,43 @@
+Date : 2026-01-07 19:15:17
+Directory : c:\sunil_data\reactproject\SPC\spc_node\controllers
+Total : 16 files,  2599 codes, 158 comments, 306 blanks, all 3063 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         16 |      2,599 |        158 |        306 |      3,063 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                         | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                            |         16 |      2,599 |        158 |        306 |      3,063 |
+| . (Files)                                                                    |         15 |      2,609 |        172 |        308 |      3,089 |
+| ..                                                                           |          1 |        -10 |        -14 |         -2 |        -26 |
+| ..\config                                                                    |          1 |        -10 |        -14 |         -2 |        -26 |
++------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                     | language   | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\sunil_data\reactproject\SPC\spc_node\config\db.config.js                  | JavaScript |        -10 |        -14 |         -2 |        -26 |
+| c:\sunil_data\reactproject\SPC\spc_node\controllers\authController.js        | JavaScript |         66 |          5 |         13 |         84 |
+| c:\sunil_data\reactproject\SPC\spc_node\controllers\backupController.js      | JavaScript |         27 |          2 |          6 |         35 |
+| c:\sunil_data\reactproject\SPC\spc_node\controllers\chartController.js       | JavaScript |        475 |         20 |         38 |        533 |
+| c:\sunil_data\reactproject\SPC\spc_node\controllers\eventController.js       | JavaScript |        149 |         10 |         18 |        177 |
+| c:\sunil_data\reactproject\SPC\spc_node\controllers\machineController.js     | JavaScript |        168 |         10 |         22 |        200 |
+| c:\sunil_data\reactproject\SPC\spc_node\controllers\managementController.js  | JavaScript |         96 |         25 |         14 |        135 |
+| c:\sunil_data\reactproject\SPC\spc_node\controllers\mesController.js         | JavaScript |         27 |          2 |          6 |         35 |
+| c:\sunil_data\reactproject\SPC\spc_node\controllers\modifyController.js      | JavaScript |        127 |          8 |         15 |        150 |
+| c:\sunil_data\reactproject\SPC\spc_node\controllers\operationalController.js | JavaScript |        150 |         10 |         20 |        180 |
+| c:\sunil_data\reactproject\SPC\spc_node\controllers\roleController.js        | JavaScript |        214 |         12 |         26 |        252 |
+| c:\sunil_data\reactproject\SPC\spc_node\controllers\shiftController.js       | JavaScript |        240 |         13 |         26 |        279 |
+| c:\sunil_data\reactproject\SPC\spc_node\controllers\stationController.js     | JavaScript |        149 |         10 |         21 |        180 |
+| c:\sunil_data\reactproject\SPC\spc_node\controllers\templateController.js    | JavaScript |        443 |         27 |         48 |        518 |
+| c:\sunil_data\reactproject\SPC\spc_node\controllers\userController.js        | JavaScript |        237 |         14 |         29 |        280 |
+| c:\sunil_data\reactproject\SPC\spc_node\controllers\utilController.js        | JavaScript |         41 |          4 |          6 |         51 |
+| Total                                                                        |            |      2,599 |        158 |        306 |      3,063 |
++------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
