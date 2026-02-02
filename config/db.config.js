@@ -19,7 +19,7 @@ const config = {
 //   server: '192.168.3.12',
 //   port: 50134,
 //   database: 'SPC_MHEL',
-//   requestTimeout: 300000,
+//   requestTimeout: 300000, 
 //   trustServerCertificate: true
 
 // }

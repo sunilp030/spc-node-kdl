@@ -250,7 +250,7 @@ exports.deleteShift = (request, res) => {
             req.execute('sp_DeletedShift', function (err, recordsets, returnValue) {
                 if (err) res.send(res);
                 else
-                    if (recordsets.output != null && recordsets.output.error_msg != null & recordsets.output.error_msg != '') {
+                    if (recordsets.output != null && recordsets.output.error_msg != null && recordsets.output.error_msg != '') {
                         res.send(200, {
                             'error': 1,
                             'msg': recordsets.output.error_msg

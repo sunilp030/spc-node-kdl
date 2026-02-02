@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 // var bodyParser = require('body-parser')
 const app = express();
+app.disable('x-powered-by');
 const port = process.env.PORT || 9000;
 // app.use('port', port);
 
@@ -10,8 +11,18 @@ app.use(express.urlencoded({limit: '100mb'}));
 // app.use(bodyParser.json({limit: "300mb"}));
 // app.use(bodyParser.urlencoded({limit: "300mb", extended: true, parameterLimit: 50000000}));
 // app.use(express.bodyParser({limit: '100mb'}));
-app.use(cors({credentials: true, origin: true}));
-app.options('*', cors());
+const corsOptions = {
+    origin: function (origin, callback) {
+        // allow requests without origin (Postman, server-to-server)
+        if (!origin) return callback(null, true);
+
+        callback(null, true); // same behavior as before, but explicit
+    },
+    credentials: true
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 var cron = require('node-cron');
 const request = require('request');
 app.use(express.json());
