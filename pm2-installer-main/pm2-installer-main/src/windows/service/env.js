@@ -7,31 +7,22 @@ const { execSync } = require('child_process');
 // Load all the ENV values we need
 
 function installDirectory() {
-
   const key = 'PM2_INSTALL_DIRECTORY';
 
   let value = process.env[key];
+  if (value) return value;
 
-  if (value !== undefined && value !== '') {
+  try {
+    const prefix = execSync('npm config get prefix --global').toString().trim();
+    value = path.join(prefix, 'node_modules', 'pm2');
+
+    console.warn(`$env:${key} is blank, assuming "${value}"`);
+    process.env[key] = value;
+
     return value;
+  } catch (err) {
+    throw new Error('Failed to resolve PM2 install directory: ' + err.message);
   }
-
-  // Attempt to determine where pm2 is likely installed
-
-  const { stdout, stderr } = execSync('npm config get prefix --global');
-
-  if (stderr.trim() !== '') {
-    console.log(`$env:${key} is blank, and we can't estimate the location manually.`);
-    throw new Error(stderr.trim());
-  }
-
-  value = path.join(stdout.trim(), 'node_modules', 'pm2');
-
-  console.warn(`$env:${key} is blank, assuming "${value}"`);
-
-  process.env[key] = value;
-
-  return value;
 }
 
 function homeDirectory() {

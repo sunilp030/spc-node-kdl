@@ -1,11 +1,11 @@
 const config = {
-      user: 'User113',
-      password: 'User11@3',
+      user: 'sa',
+      password: 'Bcsl@2025#',
       //server: '202.189.254.89', 
-      server: '192.168.3.11',
+      server: '103.25.126.208',
       port: 50133,
       //database: 'SPC_MHEL_Sun',
-      database: 'SPC_KDL',
+      database: 'DEV_SPC_KDL',
       // database: 'SPC_Pune',
       requestTimeout: 300000,
       trustServerCertificate: true

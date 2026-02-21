@@ -5,7 +5,7 @@ const process = require('process');
 const { promisify } = require('util');
 
 const output = require('./output.js');
-const { PM2_HOME, PM2_INSTALL_DIRECTORY, PM2_SERVICE_DIRECTORY } = require('./env.js');
+const { PM2_HOME, PM2_SERVICE_DIRECTORY } = require('./env.js');
 
 output.log(`\n\n\nStarting: ${new Date().toLocaleString()}`);
 
@@ -23,7 +23,7 @@ process.env.PM2_HOME = PM2_HOME;
 process.env.PM2_DEBUG = true;
 
 // Require `pm2` from its global install location
-const pm2 = require(PM2_INSTALL_DIRECTORY);
+const pm2 = require('pm2');
 
 // Define a couple settings
 pm2.daemon_mode = false;
@@ -101,10 +101,10 @@ process.once('beforeExit', async (code) => {
   if (pm2) {
 
     output.log(`Killing pm2 daemon..`);
-    await promisify(pm2.killDaemon);
+    await promisify(pm2.killDaemon)();
 
     output.log(`Disconnecting from pm2..`);
-    await promisify(pm2.disconnect);
+    await promisify(pm2.disconnect)();
   }
 });
 

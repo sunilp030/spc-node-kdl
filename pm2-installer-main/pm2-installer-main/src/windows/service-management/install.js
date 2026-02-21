@@ -14,13 +14,15 @@ const { Service } = require('node-windows');
 
 // Ensure all the environmental variables we need are populated
 
-for (const key of ['PM2_HOME', 'PM2_INSTALL_DIRECTORY', 'PM2_SERVICE_DIRECTORY']) {
-  if (process.env[key] === undefined) {
+const SAFE_ENV_KEYS = new Set(['PM2_HOME', 'PM2_INSTALL_DIRECTORY', 'PM2_SERVICE_DIRECTORY']);
+
+for (const key of SAFE_ENV_KEYS) {
+  if (!process.env[key]) {
     console.error(`ERROR: $env:${key} is undefined. Halting installation.`);
-    console.log(`Please set $env:${key} and run this script again.`);
     process.exit(1);
   }
 }
+
 
 let [directory, user, name, description] = process.argv.slice(2);
 

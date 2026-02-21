@@ -23,7 +23,17 @@ while (($null -eq $service -and $attempt -le ($maxAttempts - 1))) {
     Write-Host "Attempt #$($attempt) to locate service `"$name`" failed, trying again.."
   }
 
-  $service = Get-WMIObject -class Win32_Service -Filter $filter
+  try {
+    if (Get-Command Get-CimInstance -ErrorAction SilentlyContinue) {
+      # Modern, secure method (PowerShell 3+)
+      $service = Get-CimInstance -ClassName Win32_Service -Filter $filter -ErrorAction Stop
+    } else {
+      # Legacy fallback (PowerShell 2.0 environments)
+      $service = Get-WmiObject -Class Win32_Service -Filter $filter
+    }
+  } catch {
+    $service = $null
+  }
 
   $attempt = $attempt + 1
 }
