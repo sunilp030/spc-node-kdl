@@ -20,7 +20,7 @@
   "homepage": "https://github.com/MonikaP9/spc_node#readme",
   "dependencies": {
     "@azure/identity": "^4.13.0",
-    "axios": "^1.13.5",
+    "axios": "^1.15.1",
     "braces": "^3.0.3",
     "cookie": "^0.7.2",
     "cors": "^2.8.5",
@@ -46,6 +46,6 @@
     "minimatch": "^10.2.1"
   },
   "devDependencies": {
-    "sonarqube-scanner": "^4.3.4"
+    "sonarqube-scanner": "^4.3.6"
   }
 }
