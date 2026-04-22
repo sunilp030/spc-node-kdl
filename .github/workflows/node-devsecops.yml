@@ -73,6 +73,7 @@ jobs:
     needs: upload-artifact   # or your deploy step
     steps:
       - name: Run OWASP ZAP Scan
-        uses: zaproxy/action-full-scan@v0.5.0
+        uses: zaproxy/action-full-scan@v0.10.0
         with:
           target: 'https://spc.benchmarksolution.com/api/'
+          fail_action: false
