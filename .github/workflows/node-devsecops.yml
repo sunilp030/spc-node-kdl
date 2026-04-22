@@ -70,6 +70,9 @@ jobs:
 
   zap-scan:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
     needs: upload-artifact   # or your deploy step
     steps:
       - name: Run OWASP ZAP Scan
