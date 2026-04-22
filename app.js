@@ -1,21 +1,32 @@
 const express = require("express");
 const cors = require("cors");
-// var bodyParser = require('body-parser')
+const cron = require("node-cron");
+// Use axios instead of node-fetch (recommended)
+// const fetch = require('node-fetch'); // if using v2
+const axios = require('axios'); // safer modern alternative
+
 const app = express();
+app.disable('x-powered-by');
+
 const port = process.env.PORT || 9000;
-// app.use('port', port);
 
-app.use(express.json({limit: '100mb'}));
-app.use(express.urlencoded({limit: '100mb'}));
-// app.use(bodyParser.json({limit: "300mb"}));
-// app.use(bodyParser.urlencoded({limit: "300mb", extended: true, parameterLimit: 50000000}));
-// app.use(express.bodyParser({limit: '100mb'}));
-app.use(cors({credentials: true, origin: true}));
-app.options('*', cors());
-var cron = require('node-cron');
-const request = require('request');
-app.use(express.json());
+// Body parsers (secure & non-duplicated)
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
+// CORS (currently open – consider restricting in production)
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        callback(null, true);
+    },
+    credentials: true
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
+
+// Routes
 const userRouter = require("./routes/userRoute");
 const roleRouter = require("./routes/roleRoute");
 const stationRouter = require("./routes/stationRoute");
@@ -32,21 +43,8 @@ const managementRouter = require("./routes/managementRoute");
 const mesRouter = require("./routes/mesRoute");
 const backupRouter = require("./routes/backupRoute");
 
+app.set('view engine', 'pug');
 
-
-
-
-app.set('view engine', 'pug')
-
-//added feedback operations router
-// app.use("/feedback", feedbackRouter);
-// For the time now
-Date.prototype.timeNow = function() {
-    return ((this.getHours() < 10) ? "0" : "") + this.getHours() + ":" + ((this.getMinutes() < 10) ? "0" : "") + this.getMinutes() + ":" + ((this.getSeconds() < 10) ? "0" : "") + this.getSeconds();
-}
-
-
-//added email operations router
 app.use("/auth", authRouter);
 app.use("/common", utilRouter);
 app.use("/user", userRouter);
@@ -56,7 +54,7 @@ app.use("/station", stationRouter);
 app.use("/machine", machineRouter);
 app.use("/event", eventRouter);
 app.use("/template", templateRouter);
-app.use("/shift",shiftRouter);
+app.use("/shift", shiftRouter);
 app.use("/chart", chartRouter);
 app.use("/modify", modifyRouter);
 app.use("/management", managementRouter);
