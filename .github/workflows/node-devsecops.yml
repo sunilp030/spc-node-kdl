@@ -80,5 +80,14 @@ jobs:
         with:
           target: 'https://spc.benchmarksolution.com/api/'
           fail_action: false
-          artifact_name: zap-report   # ✅ FIX
-          allow_issue_writing: false
+          artifact_name: ""   # 🔥 disable default artifact upload
+          
+      # ✅ Upload reports manually (stable way)    
+      - name: Upload ZAP Report
+        uses: actions/upload-artifact@v4
+        with:
+         name: zap_report_${{ github.run_id }}
+         path: |
+          report_html.html
+          report_md.md
+          report_json.json     
