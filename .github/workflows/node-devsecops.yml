@@ -80,7 +80,8 @@ jobs:
         with:
           target: 'https://spc.benchmarksolution.com/api/'
           fail_action: false
-          artifact_name: ""   # 🔥 disable default artifact upload
+          allow_issue_writing: false   # ✅ disable GitHub issue creation
+          artifact_name: ""   # ✅ disable artifact upload (IMPORTANT)
           
       # ✅ Upload reports manually (stable way)    
       - name: Upload ZAP Report
