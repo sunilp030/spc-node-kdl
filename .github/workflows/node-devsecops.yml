@@ -80,3 +80,5 @@ jobs:
         with:
           target: 'https://spc.benchmarksolution.com/api/'
           fail_action: false
+          artifact_name: zap-report   # ✅ FIX
+          allow_issue_writing: false
